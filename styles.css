@@ -531,3 +531,105 @@ tbody tr:hover { background: #F7F9FD; }
   .pp-bar, .pp-foot .btns, #toast { display: none; }
   body { background: #fff; }
 }
+
+/* ============ Til almashtirgich ============ */
+.lang { display: inline-flex; background: rgba(255,255,255,.12); border-radius: 999px; padding: 3px; flex: none; }
+.lang button { border: 0; background: transparent; color: rgba(255,255,255,.78); padding: 5px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; cursor: pointer; transition: background .2s ease, color .2s ease; }
+.lang button[aria-pressed="true"] { background: #fff; color: var(--denim); }
+.lang.light { background: var(--paper); box-shadow: inset 0 0 0 1px var(--line); }
+.lang.light button { color: var(--muted); }
+.lang.light button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+/* ============ Yordamchi sinflar ============ */
+.topbar-title { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.comp-rows { display: grid; gap: 10px; }
+.sum-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.vstate { font-size: 12.5px; color: var(--muted); }
+.vstate.on { color: var(--green); }
+.url { font-size: 13px; word-break: break-all; }
+.pcard-top .verified.warn { color: var(--amber); background: var(--amber-soft); }
+.price .contact { margin: -12px 0 14px; }
+td.num { font-variant-numeric: tabular-nums; }
+.kpi .val, .days b { font-variant-numeric: tabular-nums; }
+@media (max-width: 860px) { .hide-sm { display: none !important; } }
+
+/* ============ Animatsiyalar ============ */
+@property --p { syntax: "<number>"; inherits: false; initial-value: 0; }
+
+/* sahifa almashganda yumshoq paydo bo'lish */
+#app.enter > * { animation: page-in .38s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes page-in { from { opacity: 0; } }
+
+/* sarlavha so'zlari birin-ketin chiqadi */
+.words .w { display: inline-block; animation: word-up .7s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i) * 70ms + .1s); }
+@keyframes word-up { from { opacity: 0; transform: translateY(.45em) rotate(2deg); filter: blur(4px); } }
+.fade-in { animation: word-up .7s cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--d, .4s); }
+
+/* QR ustidan skaner chizig'i o'tadi */
+.hero-card .qr { position: relative; overflow: hidden; }
+.hero-card .qr::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 22%;
+  background: linear-gradient(to bottom, rgba(63,163,122,0), rgba(63,163,122,.35) 80%, #3FA37A 100%);
+  border-bottom: 2px solid #3FA37A;
+  animation: scan 2.8s 1.4s ease-in-out infinite;
+  opacity: 0;
+}
+@keyframes scan { 0% { transform: translateY(-100%); opacity: 0; } 12% { opacity: 1; } 55% { transform: translateY(460%); opacity: 1; } 70%, 100% { transform: translateY(460%); opacity: 0; } }
+
+/* karta va chiplar sekin "suzadi" */
+.hero-card { animation: rise .9s .1s cubic-bezier(.2,.8,.2,1) both, sway 7s 1.2s ease-in-out infinite alternate; }
+@keyframes sway { from { transform: rotate(-2.5deg) translateY(0); } to { transform: rotate(-1.5deg) translateY(-8px); } }
+.chip-a { animation: rise .9s .9s cubic-bezier(.2,.8,.2,1) both, bob 5s 2s ease-in-out infinite alternate; }
+.chip-b { animation: rise .9s 1.2s cubic-bezier(.2,.8,.2,1) both, bob 6s 2.4s ease-in-out infinite alternate-reverse; }
+@keyframes bob { to { transform: translateY(-7px); } }
+.pcard.static { transform: none; animation: none; }
+.pcard.static .compbar span { animation: none; }
+
+/* tarkib chizig'i to'lib boradi */
+.compbar span { transform-origin: left; animation: grow-x .9s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 120ms + .3s); }
+@keyframes grow-x { from { transform: scaleX(0); } }
+
+/* "hozir" nuqtasi pulsatsiyasi */
+.tl li.now::after { content: ""; position: absolute; left: 4px; top: 6px; width: 16px; height: 16px; border-radius: 50%; background: var(--blue); animation: ping 2s ease-out infinite; }
+@keyframes ping { from { opacity: .55; transform: scale(1); } to { opacity: 0; transform: scale(2.6); } }
+
+/* scroll paytida bo'limlar chiqadi (qo'llab-quvvatlanadigan brauzerlarda) */
+@supports (animation-timeline: view()) {
+  .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(28px); } }
+}
+
+/* panel: halqalar, ustunlar, chiziqlar */
+.ring { animation: ring-fill 1.1s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes ring-fill { from { --p: 0; } }
+.bars span.b { transform-origin: bottom; animation: grow-y .8s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i) * 60ms + .15s); }
+@keyframes grow-y { from { transform: scaleY(0); } }
+.check .bar span { transform-origin: left; animation: grow-x 1s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i) * 90ms + .2s); }
+tbody tr { animation: row-in .45s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 60ms + .1s); }
+@keyframes row-in { from { opacity: 0; transform: translateX(-8px); } }
+.feed li, .cert { animation: row-in .45s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 80ms + .2s); }
+.kpi { transition: transform .2s ease, box-shadow .2s ease; }
+.kpi:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(20,33,61,.04), 0 18px 36px -18px rgba(20,33,61,.35); }
+
+/* pasport sahifasi: yo'l chizig'i chiziladi, bosqichlar birin-ketin */
+.journey::before { transform-origin: top; animation: grow-y-top 1.2s .2s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes grow-y-top { from { transform: scaleY(0); } }
+.journey li { animation: row-in .5s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i) * 110ms + .25s); }
+.journey li.v .node { animation: pop .45s cubic-bezier(.3,1.6,.5,1) both; animation-delay: calc(var(--i) * 110ms + .4s); }
+@keyframes pop { from { transform: scale(.4); } }
+.pp-visual .garment { animation: rise .9s .15s cubic-bezier(.2,.8,.2,1) both; }
+
+/* tugmalar */
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 22px -10px rgba(43,71,219,.8); }
+.btn-light:hover, .btn-quiet:hover { transform: translateY(-1px); }
+.cert-pick { transition: background .15s ease, color .15s ease, border-color .15s ease, transform .15s ease; }
+.cert-pick:active { transform: scale(.96); }
+.bump { display: inline-block; animation: bump .4s cubic-bezier(.3,1.6,.5,1); }
+@keyframes bump { 40% { transform: scale(1.12); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .words .w, .fade-in, #app.enter > * { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+  .hero-card .qr::after, .tl li.now::after { display: none; }
+}

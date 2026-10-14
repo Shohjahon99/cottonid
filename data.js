@@ -7,18 +7,20 @@ window.CID_DATA = {
     legal: "Vodiy Trikotaj MChJ (demo)",
     city: "Namangan",
     country: "O'zbekiston",
+    country_en: "Uzbekistan",
     stir: "309 000 000",
     plan: "Eksport",
+    plan_en: "Export",
     user: "Dilnoza Karimova",
     role: "Eksport bo'limi"
   },
 
   certificates: [
-    { id: "oekotex", name: "OEKO-TEX Standard 100", number: "22.UZ.04187", issuer: "Hohenstein (demo)", until: "2027-03-31", scope: "Trikotaj mato va tayyor kiyim" },
-    { id: "gots", name: "GOTS — organik to'qimachilik", number: "CU-GOTS-829104", issuer: "Control Union (demo)", until: "2026-11-20", scope: "Organik paxta mahsulotlari" },
-    { id: "bettercotton", name: "Better Cotton", number: "BC-UZ-55120", issuer: "Better Cotton (demo)", until: "2027-06-30", scope: "Paxta xomashyosi" },
-    { id: "iso14001", name: "ISO 14001 — ekologik boshqaruv", number: "EMS-61842", issuer: "TÜV (demo)", until: "2026-12-05", scope: "Butun korxona" },
-    { id: "bsci", name: "amfori BSCI auditi", number: "BSCI-UZ-0921", issuer: "amfori (demo)", until: "2027-09-14", scope: "Ijtimoiy muvofiqlik" }
+    { id: "oekotex", name: "OEKO-TEX Standard 100", name_en: "OEKO-TEX Standard 100", number: "22.UZ.04187", issuer: "Hohenstein (demo)", until: "2027-03-31", scope: "Trikotaj mato va tayyor kiyim", scope_en: "Knitted fabric and finished garments" },
+    { id: "gots", name: "GOTS — organik to'qimachilik", name_en: "GOTS — organic textiles", number: "CU-GOTS-829104", issuer: "Control Union (demo)", until: "2026-11-20", scope: "Organik paxta mahsulotlari", scope_en: "Organic cotton products" },
+    { id: "bettercotton", name: "Better Cotton", name_en: "Better Cotton", number: "BC-UZ-55120", issuer: "Better Cotton (demo)", until: "2027-06-30", scope: "Paxta xomashyosi", scope_en: "Raw cotton" },
+    { id: "iso14001", name: "ISO 14001 — ekologik boshqaruv", name_en: "ISO 14001 — environmental management", number: "EMS-61842", issuer: "TÜV (demo)", until: "2026-12-05", scope: "Butun korxona", scope_en: "Whole company" },
+    { id: "bsci", name: "amfori BSCI auditi", name_en: "amfori BSCI audit", number: "BSCI-UZ-0921", issuer: "amfori (demo)", until: "2027-09-14", scope: "Ijtimoiy muvofiqlik", scope_en: "Social compliance" }
   ],
 
   passports: [
